@@ -20,7 +20,32 @@ const postCategorias = async (req, res) => {
     res.json(result);
   } catch (error) {}
 };
+
+const getCategoria = async (req, res) => {
+  try {
+    id = req.params
+    const connection = await getConnection();
+    const result = await connection.query(
+      "select CategoriaID, CategoriaNombre,Descripcion,Imagen from categorias WHERE CategoriaID= ?",id
+    );
+    res.json(result);
+  } catch (error) {}
+};
+
+const deletecategoria = async (req, res) => {
+  try {
+    id = req.params
+    const connection = await getConnection();
+    const result = await connection.query(
+      "delete  from categorias WHERE CategoriaID= ?",id
+    );
+    res.json(result);
+  } catch (error) {}
+};
+
 export const metodosHTTP = {
   getCategorias,
-  postCategorias
+  postCategorias,
+  getCategoria,
+  deletecategoria
 };

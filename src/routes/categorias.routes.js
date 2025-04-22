@@ -5,5 +5,7 @@ const router = Router();
 
 router.get("/", categoriaController.getCategorias);
 router.post("/", categoriaController.postCategorias);
+router.get("/:id", categoriaController.getCategoria);
+router.delete("/:id", categoriaController.deletecategoria);
 
 export default router;
